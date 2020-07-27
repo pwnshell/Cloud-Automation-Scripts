@@ -25,9 +25,9 @@ subprocess.call(["hostnamectl", "set-hostname", hostname])
 print(termcolor.colored('\n=================', 'red', attrs=['bold']))
 print(termcolor.colored('Hostname Changed: ' + hostname, 'green', attrs=['bold']))
 print(termcolor.colored('=================', 'red', attrs=['bold']))
-print(termcolor.colored('\n=================', 'red', attrs=['bold']))
-print(termcolor.colored('Updating RPMs installed', 'red', attrs=['bold']))
-print(termcolor.colored('\n=================', 'red', attrs=['bold']))
+print(termcolor.colored('\n=====================', 'red', attrs=['bold']))
+print(termcolor.colored('Updating RPMs installed', 'green', attrs=['bold']))
+print(termcolor.colored('=====================', 'red', attrs=['bold']))
 subprocess.call("yum update -y", shell=True)
 
 def selinux():
