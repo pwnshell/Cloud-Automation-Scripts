@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+#Author: Vijay Sachdeva
+#Script for creating n number of compute offerings
+
+import pyfiglet
+import subprocess
+import termcolor
+
+ec="b1a8f9bd-778c-42cc-b6fb-ca33f12e0854"
+vpc="bb8dc9ba-b113-423f-8fd5-0eb98a5ed0c2"
+name = open("/opt/name", "r")
+size = open("/opt/size", "r")
+
+try:
+        banner = pyfiglet.figlet_format("            Disk Offerings")
+        print(termcolor.colored(banner, 'red', attrs=['bold']))
+        for i, j in zip(name, size):
+                l=i.strip()
+                m=j.strip()
+
+                subprocess.call(["cmk", "create", "diskoffering", "disksize=" + str(m), "displayoffering=" + str(l), "displaytext=" + str(l), "tags=SSDESXI", "name=" + str(l), "zoneid=" + str(vpc)])
+
+
+except KeyboardInterrupt:
+        print("\n")
+        print(termcolor.colored('\n[+] Ctrl+C..Bye..!!', 'red'))
+
+name.close()
+size.close()
